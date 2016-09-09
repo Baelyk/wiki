@@ -1,4 +1,29 @@
 <?php
+$search = $_GET["search"];
+
+$server = "127.0.0.1";
+$user = "Baelyk";
+$pass = "tardiscookie";
+$database = "wiki";
+$connection = mysqli_connect($server, $user, $pass, $database);
+
+if(!$connection) {
+    die("Connection failed: " . $connection->connect_error);
+} else {
+    // echo "Connection succeded!";
+}
+if( isset( $search ) ) {
+    $sql = "SELECT name FROM pages WHERE name='$search'";
+    $results = $connection->query($sql)->fetch_assoc();
+    if( isset( $results["name"] ) ) {
+        header("Location: /wiki/index.php?page=" . $search);
+    } else {
+        $results = FALSE;
+    }
+}
+?>
+
+<?php
     $edit = $_GET["edit"] == "on" ? TRUE : FALSE; // define edit and page as to not keep making get requests
     $page = $_GET["page"];
     $pageNullProtect = isset( $_GET["page"] ) ? $_GET["page"] : "select_page";
@@ -40,7 +65,7 @@
         <!-- WIKI CONTENT BEGIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
         <div id="wikicontent" class="wikicontent">
-                <?php include("page.php"); //output the page ?>
+                Page not found :(
         </div>
 
         <!-- WIKI CONTENT END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

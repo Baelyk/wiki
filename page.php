@@ -56,6 +56,23 @@ if( $edit ) {
     ';
 } else {
     // echo "\$edit is FALSE";
+    while($beginBracket = strpos(" " . $content, "[[") > 0) {
+        $beginBracket = strpos(" " . $content, "[[");
+        $endBracket = strpos(" " . $content, "]]");
+        $link = substr($content, $beginBracket + 1, abs($beginBracket - $endBracket) - 2); // add one to display because of the space in strpos and to exlude the brackets
+
+        $sql = "SELECT name FROM pages WHERE name='$link'";
+
+        $linkPage = $connection->query($sql);
+        $linkPage = $linkPage->fetch_assoc();
+
+        $link =  "[" . $link . "](/wiki/?page=" . $link . ")";
+        $content = substr_replace($content, $link, $beginBracket - 1, abs($beginBracket - $endBracket) + 2);
+
+    }
+
+
+    echo "<br />";
     $display = shell_exec('/usr/local/bin/node /Users/Baelyk/Documents/Server/wiki/assets/js/markdownify.js "' . $content . '"');
 }
 
