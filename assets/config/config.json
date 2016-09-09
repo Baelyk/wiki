@@ -1,0 +1,12 @@
+var config = {
+    "wiki": {
+        "name": "Test Wiki",
+        "description": "Testing the capabilities of creating a wiki.",
+        "logo": {
+            "src": "assets/img/wikilogo.png",
+            "alttext": "Wiki Logo"
+        }
+    },
+    "defaultpage": "main",
+    "maincss": "assets/css/stylesheet.css"
+}

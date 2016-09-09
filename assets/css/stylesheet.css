@@ -1,0 +1,104 @@
+body {
+    font-family: menlo, helvetica, sans-serif;
+    background-color: #f7f7f7;
+}
+
+a {
+    color: #0080ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #005fbd;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #0080ff;
+    text-decoration: none;
+}
+
+/* -------------------------------------------------------------------------- */
+
+header {
+    position: absolute;
+    left: 0; top: 0;
+    padding: 5pt;
+    /*padding-bottom: 10pt;*/
+    /*border-bottom: 1.5pt solid black;*/
+}
+
+.wikiheader {
+    display:flex;
+    display: -webkit-flex;
+}
+
+.wikilogo {
+    /*padding-bottom: 5pt;*/
+    display: inline-block;
+    margin-right: 10pt;
+}
+
+.header {
+    display: inline-block;
+    /*border-left: 1pt solid black;*/
+    padding-top: 35px;
+    padding-left: 10pt;
+}
+
+.wikiname {
+    font-size: 32pt;
+    /*font-weight: bold;*/
+    position: relative;
+    top: -10pt;
+}
+
+.controlbar {
+    padding-left: 117pt;
+}
+
+.sidebar {
+    position: absolute;
+    top: 165px;
+    width: 128px;
+    padding-right: 24px;
+    /*border-top: 1pt solid black;
+    border-right: 1pt solid black;*/
+    /*float: left;*/
+}
+
+.wikicontent {
+    position: absolute;
+    left: 162px; top: 169px;
+    padding: 10pt;
+    background-color: #ffffff;
+    border-top: 1pt solid black;
+    border-left: 1pt solid black;
+    width: 100%;
+}
+
+.wikicontent textarea {
+    font-family: menlo, helvetica, sans-serif;
+    font-size: 12pt;
+    /*border: 0px;*/
+}
+
+/*.selectpage .filled {
+    width: 1000px !important;
+    color: black !important;
+}*/
+
+.search {
+    width: 120px;
+    color: #999999;
+}
+
+.search:focus {
+    width: 120px;
+    color: black;
+}
+
+.search-filled {
+    width: 120px;
+    color: black;
+}
