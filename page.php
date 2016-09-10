@@ -75,6 +75,24 @@ if( $edit ) {
         }
         $display = substr_replace($display, $link, $beginBracket - 1, abs($beginBracket - $endBracket) + 2);
     }
+
+    while($beginPipe = strpos(" " . $display, "{{") > 0) {
+        $beginPipe = strpos(" " . $display, "{{");
+        $endPipe = strpos(" " . $display, "}}");
+        $upload = substr($display, $beginPipe + 1, abs($beginPipe - $endPipe) - 2); // add one to display because of the space in strpos and to exlude the brackets
+
+        $sql = "SELECT location, altText FROM uploads WHERE name='$upload'";
+
+        $uploadPage = $connection->query($sql);
+
+        if( $uploadPage->num_rows > 0 ) {
+            $uploadPage = $uploadPage->fetch_assoc();
+            $upload = "<img src='" . $uploadPage["location"] . "' alt='" . $uploadPage["altText"] . "' />";
+        } else {
+            $upload = "Upload not found :/";
+        }
+        $display = substr_replace($display, $upload, $beginPipe - 1, abs($beginPipe - $endPipe) + 2);
+    }
 }
 
 if( $pageExists == FALSE ) {

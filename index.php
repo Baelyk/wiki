@@ -32,6 +32,8 @@
             <a href=<?php echo "?page=" . $pageNullProtect . "&edit=on"; ?>>Edit Page</a>
             <a href=<?php echo "print.php?page=" . $pageNullProtect ?>>Print Page</a>
             <hr />
+            <a href="upload.php">Upload Image</a>
+            <hr />
             <a href="/wiki/?page=createpage">Create Page</a>
             <hr />
             <form class="search" action="/wiki/search.php" method="get">

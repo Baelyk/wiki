@@ -188,3 +188,7 @@ header {
     width: 120px;
     color: black;
 }
+
+.hide {
+    display: none;
+}
