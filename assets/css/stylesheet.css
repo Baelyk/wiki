@@ -3,7 +3,12 @@ body {
     background-color: #f7f7f7;
 }
 
-a {
+a:link {
+    color: #0080ff;
+    text-decoration: none;
+}
+
+a:visited {
     color: #0080ff;
     text-decoration: none;
 }
@@ -13,9 +18,34 @@ a:hover {
     text-decoration: underline;
 }
 
-a:visited {
+.exists:link {
     color: #0080ff;
     text-decoration: none;
+}
+
+.exists:visited {
+    color: #0080ff;
+    text-decoration: none;
+}
+
+.exists:hover {
+    color: #005fbd;
+    text-decoration: underline;
+}
+
+.noexists:link {
+    color: #e90002;
+    text-decoration: none;
+}
+
+.noexists:visited {
+    color: #e90002;
+    text-decoration: none;
+}
+
+.noexists:hover {
+    color: #bb0001;
+    text-decoration: underline;
 }
 
 /* -------------------------------------------------------------------------- */
