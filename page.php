@@ -50,7 +50,7 @@ if( $edit ) {
         <form name="edit" id="edit" action="modify.php" method="POST">
             <input type="hidden" value="' . $page . '" name="page"/>
             <textarea name="content" cols="100" rows="30">' . $content . '</textarea> <br />
-            <input type="submit" value="Update Page" />
+            Update Reason: <input type="text" value="Minor Edit" name="reason" /><input type="submit" value="Update Page" />
         </form>
 
     ';

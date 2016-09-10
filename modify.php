@@ -13,11 +13,11 @@ if(!$connection) {
 }
 if( isset( $_POST["create"] ) ) {
     // echo "create";
-    $sql = 'INSERT INTO pages (name, content) VALUES ("' . $_POST["page"] . '", "' . htmlspecialchars($_POST["content"]) . '")';
+    $sql = 'INSERT INTO pages (name, content, reason) VALUES ("' . $_POST["page"] . '", "' . htmlspecialchars($_POST["content"]) . '")';
     $redirectInfo = "#created";
 } else {
     // echo "update";
-    $sql = 'UPDATE pages SET content="'.htmlspecialchars($_POST["content"]).'" WHERE name="'.$_POST["page"].'"';
+    $sql = 'UPDATE pages SET content="'.htmlspecialchars($_POST["content"]).'", reason="' . $_POST["reason"] . '" WHERE name="'.$_POST["page"].'"';
     $redirectInfo = "#updated";
 }
 
