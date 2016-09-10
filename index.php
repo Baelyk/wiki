@@ -21,13 +21,15 @@
                 </div>
             </div>
             <div id="controlbar" class="controlbar">
-                <span id="read" class="read"><button <?php echo (!$edit ? "disabled" : "") ?> type="button" name="read" onclick=<?php echo ( isset( $page ) ? "window.location='/wiki/?page=" . $page . "'" : "" ); ?>><i class="fa fa-file-o" aria-hidden="true"></i></button></span><span id="edit" class="edit"><button <?php echo ($edit ? "disabled" : "") ?> type="button" name="edit" onclick=<?php echo (isset( $page ) ? "location.href='/wiki/?page=" . $page . "&edit=on'" : "'location.href=/wiki/?page=select_page&edit=on'"); ?>><i class="fa fa-pencil" aria-hidden="true"></i></button></span>
+                <span id="read" class="read"><button <?php echo (!$edit ? "disabled" : "") ?> type="button" name="read" onclick=<?php echo ( isset( $page ) ? "window.location='/wiki/?page=" . $page . "'" : "" ); ?>><i class="fa fa-file-o" aria-hidden="true"></i></button></span>
+                <span id="edit" class="edit"><button <?php echo ($edit ? "disabled" : "") ?> type="button" name="edit" onclick=<?php echo (isset( $page ) ? "location.href='/wiki/?page=" . $page . "&edit=on'" : "'location.href=/wiki/?page=select_page&edit=on'"); ?>><i class="fa fa-pencil" aria-hidden="true"></i></button></span>
+                <span id="print" class="print"><button type="button" name="print" onclick=<?php echo (isset( $page ) ? "location.href='/wiki/print.php?page=" . $page . "'": "'location.href=/wiki/print.php?page=select_page'"); ?>><i class="fa fa-print" aria-hidden="true"></i></button></span>
             </div>
         </header>
 
         <div id="sidebar" class="sidebar">
-            <a href=<?php echo "?page=" . $pageNullProtect . "&edit=on"; ?>>Edit Page</a>
             <a href=<?php echo "?page=" . $pageNullProtect ?>>Read Page</a>
+            <a href=<?php echo "?page=" . $pageNullProtect . "&edit=on"; ?>>Edit Page</a>
             <a href=<?php echo "print.php?page=" . $pageNullProtect ?>>Print Page</a>
             <hr />
             <a href="/wiki/?page=createpage">Create Page</a>

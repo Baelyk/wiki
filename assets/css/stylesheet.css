@@ -48,6 +48,62 @@ a:hover {
     text-decoration: underline;
 }
 
+.header-anchor:link {
+    color: #005fbd;
+}
+
+.header-anchor:hover {
+    color: #0080ff;
+}
+
+h1 > a {
+    display: none;
+}
+
+h1:hover > a {
+    display: inline;
+}
+
+h2 > a {
+    display: none;
+}
+
+h2:hover > a {
+    display: inline;
+}
+
+h3 > a {
+    display: none;
+}
+
+h3:hover > a {
+    display: inline;
+}
+
+h4 > a {
+    display: none;
+}
+
+h4:hover > a {
+    display: inline;
+}
+
+h5 > a {
+    display: none;
+}
+
+h5:hover > a {
+    display: inline;
+}
+
+h6 > a {
+    display: none;
+}
+
+h6:hover > a {
+    display: inline;
+}
+
 /* -------------------------------------------------------------------------- */
 
 header {
