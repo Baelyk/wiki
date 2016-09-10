@@ -11,10 +11,10 @@ $reason = $_POST["reason"];
 
 $content = str_replace("$", "&#36;", $content);
 $content = str_replace('"', "&quot;", $content);
-$content = str_replace("$", "&#39;", $content);
+$content = str_replace("'", "&#39;", $content);
 $reason = str_replace("$", "&#36;", $reason);
 $reason = str_replace('"', "&quot;", $reason);
-$reason = str_replace("$", "&#39;", $reason);
+$reason = str_replace("'", "&#39;", $reason);
 
 if(!$connection) {
     die("Connection failed: " . $connection->connect_error);

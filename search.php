@@ -1,32 +1,35 @@
 <?php
-$search = $_GET["search"];
+    $search = $_GET["search"];
 
-$server = "127.0.0.1";
-$user = "Baelyk";
-$pass = "tardiscookie";
-$database = "wiki";
-$connection = mysqli_connect($server, $user, $pass, $database);
+    $server = "127.0.0.1";
+    $user = "Baelyk";
+    $pass = "tardiscookie";
+    $database = "wiki";
+    $connection = mysqli_connect($server, $user, $pass, $database);
 
-if(!$connection) {
-    die("Connection failed: " . $connection->connect_error);
-} else {
-    // echo "Connection succeded!";
-}
-if( isset( $search ) ) {
-    $sql = "SELECT name FROM pages WHERE name='$search'";
-    $results = $connection->query($sql)->fetch_assoc();
-    if( isset( $results["name"] ) ) {
-        header("Location: /wiki/index.php?page=" . $search);
+    if(!$connection) {
+        die("Connection failed: " . $connection->connect_error);
     } else {
-        $results = FALSE;
+        // echo "Connection succeded!";
     }
-}
-?>
 
-<?php
     $edit = $_GET["edit"] == "on" ? TRUE : FALSE; // define edit and page as to not keep making get requests
     $page = $_GET["page"];
     $pageNullProtect = isset( $_GET["page"] ) ? $_GET["page"] : "select_page";
+
+    $search = str_replace("$", "&#36;", $search);
+    $search = str_replace('"', "&quot;", $search);
+    $search = str_replace("'", "&#39;", $search);
+
+    $sql = "SELECT name FROM pages WHERE name='$search'";
+
+    $results = $connection->query($sql);
+
+    if( $results->num_rows > 0 ) {
+        $results = $results->fetch_assoc();
+        header("Location: /wiki/index.php?page=" . $search);
+        echo "<br />"; die("Warning: Results found but header not activated.");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,7 +68,7 @@ if( isset( $search ) ) {
         <!-- WIKI CONTENT BEGIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
         <div id="wikicontent" class="wikicontent">
-                Page not found :(
+                <?php include("searchscript.php"); //output the page ?>
         </div>
 
         <!-- WIKI CONTENT END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
