@@ -15,7 +15,10 @@ var MarkdownIt = require('markdown-it')()
     .use(Sub)
     .use(Sup)
     .use(TContents)
-    .use(Anch)
+    .use(Anch, {
+        permalink: true,
+        permalinkSymbol: "<i class='fa fa-link' aria-hidden='true'></i>"
+    })
     .use(FontAwesome)
     .use(Attrs);
 // var md = new MarkdownIt();

@@ -34,7 +34,7 @@
             <hr />
             <form class="search" action="/wiki/search.php" method="get">
                 <input id="search" class="search" type="text" name="search" value="Search..." />
-                <input type="submit" name="search" value="Go">
+                <input type="submit" name="searchsubmit" value="Go">
             </form>
         </div>
 
