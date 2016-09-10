@@ -8,6 +8,7 @@
     <head>
         <meta charset="utf-8">
         <link id="maincss" rel="stylesheet" href="assets/css/stylesheet.css" media="screen" title="no title">
+        <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css" media="screen" title="no title">
         <title>Wiki</title>
     </head>
     <body>
@@ -20,7 +21,7 @@
                 </div>
             </div>
             <div id="controlbar" class="controlbar">
-                <span id="read" class="read"><button <?php echo (!$edit ? "disabled" : "") ?> type="button" name="read" onclick=<?php echo ( isset( $page ) ? "window.location='/wiki/?page=" . $page . "'" : "" ); ?>>&boxbox;</button></span><span id="edit" class="edit"><button <?php echo ($edit ? "disabled" : "") ?> type="button" name="edit" onclick=<?php echo (isset( $page ) ? "location.href='/wiki/?page=" . $page . "&edit=on'" : "'location.href=/wiki/?page=select_page&edit=on'"); ?>>&#9998;</button></span>
+                <span id="read" class="read"><button <?php echo (!$edit ? "disabled" : "") ?> type="button" name="read" onclick=<?php echo ( isset( $page ) ? "window.location='/wiki/?page=" . $page . "'" : "" ); ?>><i class="fa fa-file-o" aria-hidden="true"></i></button></span><span id="edit" class="edit"><button <?php echo ($edit ? "disabled" : "") ?> type="button" name="edit" onclick=<?php echo (isset( $page ) ? "location.href='/wiki/?page=" . $page . "&edit=on'" : "'location.href=/wiki/?page=select_page&edit=on'"); ?>><i class="fa fa-pencil" aria-hidden="true"></i></button></span>
             </div>
         </header>
 
@@ -36,7 +37,7 @@
                 <input type="submit" name="search" value="Go">
             </form>
         </div>
-        
+
         <!-- WIKI CONTENT BEGIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
         <div id="wikicontent" class="wikicontent">
