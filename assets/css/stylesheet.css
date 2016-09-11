@@ -192,3 +192,7 @@ header {
 .hide {
     display: none;
 }
+
+.viewimage {
+    border: 1px solid black;
+}

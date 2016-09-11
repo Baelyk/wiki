@@ -26,7 +26,7 @@ if( isset($_GET["id"] ) ) {
             $description = isset( $file["description"] ) ? $file["description"] : ( isset( $file["altText"] ) ? $file["altText"] : "N/A");
             $date = isset( $file["uploadDate"] ) ? $file["uploadDate"] : "N/A";
             echo "<h2>" . $file["readName"] . "</h2>";
-            echo "<img src='" . $file["location"] . "' alt='" . $file["altText"] . "' />";
+            echo "<img class='viewimage' src='" . $file["location"] . "' alt='" . $file["altText"] . "' />";
             echo "<p class='description'><b>Description:</b><br />$description</p>";
             echo "<p class='date'><b>Date:</b> $date</p>";
         } else {

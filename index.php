@@ -28,6 +28,8 @@
         </header>
 
         <div id="sidebar" class="sidebar">
+            <a href="?page=main"><?php echo ( $page == "main" ? "<b>Main Page</b>" : "Main Page") ?></a>
+            <hr />
             <a href=<?php echo "?page=" . $pageNullProtect ?>>Read Page</a>
             <a href=<?php echo "?page=" . $pageNullProtect . "&edit=on"; ?>>Edit Page</a>
             <a href=<?php echo "print.php?page=" . $pageNullProtect ?>>Print Page</a>
