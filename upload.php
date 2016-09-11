@@ -1,5 +1,8 @@
 <?php
     if( isset( $_POST["uploadSubmit"] ) ) {
+        date_default_timezone_set("America/Chicago");
+        $now = date(DATE_ATOM);
+
         $doUpload = TRUE;
         $failReason = "";
         $uploadDir = "assets/img/uploads/";
@@ -37,6 +40,7 @@
                 } else {
                     // echo "Connection succeded!";
                 }
+                
                 $id = $_POST["id"];
                 $name = $_POST["name"];
                 $alt = $_POST["alt"];
@@ -55,7 +59,7 @@
                 $description = str_replace('"', "&quot;", $description);
                 $description = str_replace("'", "&#39;", $description);
 
-                $sql = "INSERT INTO uploads (name, readName, description, altText, location) VALUES ('" . $id . "', '" . $name . "', '" . $description . "', '" . $alt . "', '" . $uploadFile . "')";
+                $sql = "INSERT INTO uploads (name, readName, description, altText, location, uploadDate) VALUES ('" . $id . "', '" . $name . "', '" . $description . "', '" . $alt . "', '" . $uploadFile . "', '" . $now . "')";
 
                 if($connection->query($sql) === TRUE) {
                     echo "Success!<br />";

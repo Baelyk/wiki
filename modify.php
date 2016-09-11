@@ -1,4 +1,7 @@
 <?php
+date_default_timezone_set("America/Chicago");
+$now = date(DATE_ATOM);
+
 // echo $_POST["content"];
 $server = "127.0.0.1";
 $user = "Baelyk";
@@ -23,11 +26,11 @@ if(!$connection) {
 }
 if( isset( $_POST["create"] ) ) {
     // echo "create";
-    $sql = 'INSERT INTO pages (name, content, reason) VALUES ("' . $_POST["page"] . '", "' . htmlspecialchars($content) . '")';
+    $sql = 'INSERT INTO pages (name, content, dateCreated, dateLastUpdated) VALUES ("' . $_POST["page"] . '", "' . htmlspecialchars($content) . '", "' . $now . '", "' . $now . '")';
     $redirectInfo = "#created";
 } else {
     // echo "update";
-    $sql = 'UPDATE pages SET content="'.htmlspecialchars($content).'", reason="' . $reason . '" WHERE name="'.$_POST["page"].'"';
+    $sql = 'UPDATE pages SET content="'.htmlspecialchars($content).'", reason="' . $reason . '", dateLastUpdated="' . $now . '" WHERE name="'.$_POST["page"].'"';
     $redirectInfo = "#updated";
 }
 
