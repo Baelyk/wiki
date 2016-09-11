@@ -33,6 +33,7 @@
             <a href=<?php echo "print.php?page=" . $pageNullProtect ?>>Print Page</a>
             <hr />
             <a href="upload.php">Upload Image</a>
+            <a href="view.php">View Image</a>
             <hr />
             <a href="/wiki/?page=createpage">Create Page</a>
             <hr />

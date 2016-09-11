@@ -81,13 +81,13 @@ if( $edit ) {
         $endPipe = strpos(" " . $display, "}}");
         $upload = substr($display, $beginPipe + 1, abs($beginPipe - $endPipe) - 2); // add one to display because of the space in strpos and to exlude the brackets
 
-        $sql = "SELECT location, altText FROM uploads WHERE name='$upload'";
+        $sql = "SELECT name, altText, location FROM uploads WHERE name='$upload'";
 
         $uploadPage = $connection->query($sql);
 
         if( $uploadPage->num_rows > 0 ) {
             $uploadPage = $uploadPage->fetch_assoc();
-            $upload = "<img src='" . $uploadPage["location"] . "' alt='" . $uploadPage["altText"] . "' />";
+            $upload = "<a href='view.php?id=" . $uploadPage["name"] . "'><img src='" . $uploadPage["location"] . "' alt='" . $uploadPage["altText"] . "' /></a>";
         } else {
             $upload = "Upload not found :/";
         }
