@@ -1,8 +1,8 @@
 .center {
-    width: 7.5in;
+    width: 8.5in;
     font-family: helvetica, sans-serif;
     font-size: 12pt;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1in;
+    padding-top: 1in;
+    padding-left: 1in;
+    padding-right: 1in;
 }
