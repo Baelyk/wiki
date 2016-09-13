@@ -6,7 +6,7 @@
         $doUpload = TRUE;
         $failReason = "";
         $uploadDir = "assets/img/uploads/";
-        $uploadFile = $uploadDir . basename($_FILES["upload"]["name"]);
+        $uploadFile = $content = str_replace(" ", "-", $uploadDir . basename($_FILES["upload"]["name"]));
         $uploadType = pathinfo($uploadFile, PATHINFO_EXTENSION);
 
         $isReal = getimagesize($_FILES["upload"]["tmp_name"]);
@@ -40,7 +40,7 @@
                 } else {
                     // echo "Connection succeded!";
                 }
-                
+
                 $id = $_POST["id"];
                 $name = $_POST["name"];
                 $alt = $_POST["alt"];
@@ -49,6 +49,7 @@
                 $id = str_replace("$", "&#36;", $id);
                 $id = str_replace('"', "&quot;", $id);
                 $id = str_replace("'", "&#39;", $id);
+                $id = str_replace(" ", "-", $id);
                 $name = str_replace("$", "&#36;", $name);
                 $name = str_replace('"', "&quot;", $name);
                 $name = str_replace("'", "&#39;", $name);

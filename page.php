@@ -56,7 +56,7 @@ if( $edit ) {
     ';
 } else {
     // if edit is false:
-    $display = shell_exec('/usr/local/bin/node /Users/Baelyk/Documents/Server/wiki/assets/js/markdownify.js "' . $content . '"');
+    $display = $content;
 
     while($beginBracket = strpos(" " . $display, "[[") > 0) {
         $beginBracket = strpos(" " . $display, "[[");
@@ -69,9 +69,9 @@ if( $edit ) {
         $linkPage = $linkPage->fetch_assoc();
 
         if( isset( $linkPage["name"] ) ) {
-            $link = "<a class='exists' href='?page=" . $link . "'>" . $link . "</a>";
+            $link = "[$link](?page=$link){.exists}";
         } else {
-            $link = "<a class='noexists' href='?page=" . $link . "'>" . $link . "</a>";
+            $link = "[$link](?page=$link){.noexists}";
         }
         $display = substr_replace($display, $link, $beginBracket - 1, abs($beginBracket - $endBracket) + 2);
     }
@@ -87,12 +87,14 @@ if( $edit ) {
 
         if( $uploadPage->num_rows > 0 ) {
             $uploadPage = $uploadPage->fetch_assoc();
-            $upload = "<a href='view.php?id=" . $uploadPage["name"] . "'><img src='" . $uploadPage["location"] . "' alt='" . $uploadPage["altText"] . "' /></a>";
+            $upload = "[![" . $uploadPage["altText"] . "](" . $uploadPage["location"] . ")](view.php?id=$upload)";
         } else {
             $upload = "Upload not found :/";
         }
         $display = substr_replace($display, $upload, $beginPipe - 1, abs($beginPipe - $endPipe) + 2);
     }
+
+    $display = shell_exec('/usr/local/bin/node /Users/Baelyk/Documents/Server/wiki/assets/js/markdownify.js "' . $display . '"');
 }
 
 if( $pageExists == FALSE ) {
