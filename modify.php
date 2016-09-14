@@ -31,6 +31,7 @@ if( isset( $_POST["create"] ) ) {
 } else {
     // echo "update";
     $sql = 'UPDATE pages SET content="'.htmlspecialchars($content).'", reason="' . $reason . '", dateLastUpdated="' . $now . '" WHERE name="'.$_POST["page"].'"';
+    $sql = "INSERT INTO pagesversions (name, content, dateVersion, reason) VALUES ('" . $_POST["page"] . "', '" . htmlspecialchars($content) . "', '$now', '$reason')";
     $redirectInfo = "#updated";
 }
 
