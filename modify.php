@@ -15,9 +15,11 @@ $reason = $_POST["reason"];
 $content = str_replace("$", "&#36;", $content);
 $content = str_replace('"', "&quot;", $content);
 $content = str_replace("'", "&#39;", $content);
+$content = str_replace("\\", "&#92;", $content);
 $reason = str_replace("$", "&#36;", $reason);
 $reason = str_replace('"', "&quot;", $reason);
 $reason = str_replace("'", "&#39;", $reason);
+$reason = str_replace("\\", "&#92;", $reason);
 
 if(!$connection) {
     die("Connection failed: " . $connection->connect_error);
@@ -31,11 +33,11 @@ if( isset( $_POST["create"] ) ) {
 } else {
     // echo "update";
     $sql = 'UPDATE pages SET content="'.htmlspecialchars($content).'", reason="' . $reason . '", dateLastUpdated="' . $now . '" WHERE name="'.$_POST["page"].'"';
-    $sql = "INSERT INTO pagesversions (name, content, dateVersion, reason) VALUES ('" . $_POST["page"] . "', '" . htmlspecialchars($content) . "', '$now', '$reason')";
+    $sql1 = "INSERT INTO pagesversions (name, content, dateVersion, reason) VALUES ('" . $_POST["page"] . "', '" . htmlspecialchars($content) . "', '$now', '$reason')";
     $redirectInfo = "#updated";
 }
 
-if($connection->query($sql) === TRUE) {
+if($connection->query($sql) === TRUE && $connection->query($sql1) === TRUE) {
     // echo " Success! ";
 } else {
     echo " ERROR " . $connection->error;

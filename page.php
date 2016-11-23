@@ -59,10 +59,10 @@ if( $edit ) {
     $display = $content;
 
     while($beginBracket = strpos(" " . $display, "[[") > 0) {
+        // $display = str_replace("[[toc]]", "[toc]", $display);
         $beginBracket = strpos(" " . $display, "[[");
         $endBracket = strpos(" " . $display, "]]");
         $link = substr($display, $beginBracket + 1, abs($beginBracket - $endBracket) - 2); // add one to display because of the space in strpos and to exlude the brackets
-
         $sql = "SELECT name FROM pages WHERE name='$link'";
 
         $linkPage = $connection->query($sql);
@@ -93,8 +93,26 @@ if( $edit ) {
         }
         $display = substr_replace($display, $upload, $beginPipe - 1, abs($beginPipe - $endPipe) + 2);
     }
+    while(strpos(" " . $display, "&#92;&#92;:") > 0) {
+        $display = str_replace('&#92;&#92;:', "$", $display);
+    }
 
-    $display = shell_exec('/usr/local/bin/node /Users/Baelyk/Documents/Server/wiki/assets/js/markdownify.js "' . $display . '"');
+    while(strpos(" " . $display, ":&#92;&#92;") > 0) {
+        $display = str_replace(':&#92;&#92;', "$", $display);
+    }
+
+    while(strpos(" " . $display, "&#92;&#92;;") > 0) {
+        $display = str_replace('&#92;&#92;;', "\\\\[", $display);
+    }
+
+    while(strpos(" " . $display, ";&#92;&#92;") > 0) {
+        $display = str_replace(';&#92;&#92;', "\\\\]", $display);
+    }
+    while(strpos(" " . $display, "&#92;") > 0) {
+        $display = str_replace("&#92;", "\\", $display);
+    }
+    // $display = str_replace("[toc]", "[[toc]]", $display);
+    $display = shell_exec("/usr/local/bin/node /Users/Baelyk/Documents/Server/wiki/assets/js/markdownify.js '$display' ");
 }
 
 if( $pageExists == FALSE ) {

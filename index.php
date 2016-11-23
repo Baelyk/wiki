@@ -7,6 +7,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
         <link id="maincss" rel="stylesheet" href="assets/css/stylesheet.css" media="screen" title="no title">
         <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css" media="screen" title="no title">
         <title>Wiki</title>
@@ -60,13 +61,16 @@
     <script src="assets/config/config.json" charset="utf-8"></script>
     <script src="assets/js/markdown-it.js" charset="utf-8"></script>
     <script type="text/javascript">
+
         // var header = document.getElementById("header");
         var wikilogo = document.getElementById("wikilogo");
         var wikiname = document.getElementById("wikiname");
         var wikidescription = document.getElementById("wikidescription");
         var search = document.getElementById("search");
         var wikicontent = document.getElementById("wikicontent");
+        // var tocTitle = document.getElementByClassName("table-of-contents");
         // var footer = document.getElementById("footer");
+
 
         wikilogo.innerHTML = "<img src=" + config.wiki.logo.src + " alt=" + config.wiki.logo.alttext + " />";
         wikiname.innerHTML = config.wiki.name;
@@ -84,5 +88,16 @@
                 this.className = "search-filled";
             }
         }, false);
+
+        // var txt = "";
+        // for (var i = 0; i < c.length; i++) {
+        //     txt = txt + tocTitle[i].nodeName + "<br>";
+        // }
+        // document.write(txt);
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            displayAlign: "left",
+        });
     </script>
 </html>

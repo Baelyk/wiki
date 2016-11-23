@@ -1,8 +1,28 @@
-.center {
+.page {
     width: 8.5in;
     font-family: helvetica, sans-serif;
     font-size: 16pt;
-    padding-top: 0.5in;
-    padding-left: 1in;
-    padding-right: 1in;
+    padding-left: 0.5in;
+}
+
+a:visited {
+    color: blue;
+    text-decoration: link;
+}
+
+a:visited {
+    color: blue;
+    text-decoration: none;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5pt;
 }
